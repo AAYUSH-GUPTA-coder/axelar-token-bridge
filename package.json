@@ -23,6 +23,7 @@
     "typechain": "^8.1.0"
   },
   "dependencies": {
-    "@axelar-network/axelar-gmp-sdk-solidity": "^3.3.0"
+    "@axelar-network/axelar-gmp-sdk-solidity": "^3.3.0",
+    "@openzeppelin/contracts": "^4.9.0"
   }
 }
