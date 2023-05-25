@@ -6,24 +6,41 @@ import { IAxelarGateway } from "@axelar-network/axelar-gmp-sdk-solidity/contract
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract sendToken {
+    /// @notice variable to store the IAxelarGateway
     IAxelarGateway public immutable gateway;
+
+    /// @notice variable to store the ERC20 Token
     IERC20 public immutable token;
 
+    /**
+     * @notice constructor to set gateway and token address
+     * @param gateway_ address of the gateway
+     * @param token_ address of the erc20 token
+     */
     constructor(address gateway_, address token_){
         gateway = IAxelarGateway(gateway_);
         token = IERC20(token_);
     }
 
+    /**
+     * @notice function to send token from Polygon chain to Avalance chain
+     * @param _amount amount of token
+     */
     function send(uint _amount) public {
         token.approve(address(gateway), _amount);
         gateway.sendToken(
             "Avalanche", // network to send
             "0x4E476F7FB84c785557cDECdbf8CADEbE8EA57C37", // address to send
-            "aUSDC",
-            _amount
+            "aUSDC", // token name
+            _amount // amount of token
         );
     }
 
+    /**
+     * @notice function to withdraw tokens from the contract
+     * @param _receiver address of the receiver
+     * @param _amount amount of tokens
+     */
     function withdraw(address _receiver, uint _amount) public {
         token.transfer(_receiver, _amount);
     }
