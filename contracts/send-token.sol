@@ -2,7 +2,7 @@
 
 pragma solidity 0.8.17;
 
-import { IAxelarGateway } from "@axelar-network/axelar-gmp-sdk-solidity/contracts/interfaces/IAxelarGateway.sol";
+import {IAxelarGateway} from "@axelar-network/axelar-gmp-sdk-solidity/contracts/interfaces/IAxelarGateway.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract sendToken {
@@ -17,7 +17,7 @@ contract sendToken {
      * @param gateway_ address of the gateway
      * @param token_ address of the erc20 token
      */
-    constructor(address gateway_, address token_){
+    constructor(address gateway_, address token_) {
         gateway = IAxelarGateway(gateway_);
         token = IERC20(token_);
     }
@@ -43,6 +43,21 @@ contract sendToken {
      */
     function withdraw(address _receiver, uint _amount) public {
         token.transfer(_receiver, _amount);
+    }
+
+    //////////////// Getter Funtions /////////////////
+    /**
+     * @notice function to get the Token balance of the smart contract
+     */
+    function getBalance() external view returns (uint) {
+        return token.balanceOf(address(this));
+    }
+
+    /**
+     * @notice function to get the token balance of the user
+     */
+    function getBalance(address _user) external view returns (uint) {
+        return token.balanceOf(_user);
     }
 }
 
