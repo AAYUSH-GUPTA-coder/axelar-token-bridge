@@ -26,11 +26,11 @@ contract SendToken {
      * @notice function to send token from Polygon chain to Avalance chain
      * @param _amount amount of token
      */
-    function send(uint _amount) public {
+    function send(uint _amount, string calldata _receiver) public {
         token.approve(address(gateway), _amount);
         gateway.sendToken(
             "Avalanche", // network to send
-            "0x4E476F7FB84c785557cDECdbf8CADEbE8EA57C37", // address to send
+            _receiver, // address to send
             "aUSDC", // token name
             _amount // amount of token
         );
@@ -56,7 +56,7 @@ contract SendToken {
     /**
      * @notice function to get the token balance of the user
      */
-    function getBalance(address _user) external view returns (uint) {
+    function getUserBalance(address _user) external view returns (uint) {
         return token.balanceOf(_user);
     }
 }
