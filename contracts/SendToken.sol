@@ -60,6 +60,3 @@ contract SendToken {
         return token.balanceOf(_user);
     }
 }
-
-// gateway_ : 0xBF62ef1486468a6bd26Dd669C06db43dEd5B849B
-// token_ : 0x2c852e740B62308c46DD29B982FBb650D063Bd07
