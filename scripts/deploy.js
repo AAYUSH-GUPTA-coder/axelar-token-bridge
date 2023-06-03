@@ -1,9 +1,12 @@
 const hre = require("hardhat");
 require("@nomiclabs/hardhat-etherscan");
 
+const IAxelarGateway = "0xBF62ef1486468a6bd26Dd669C06db43dEd5B849B";
+const tokenAddress = "0x2c852e740B62308c46DD29B982FBb650D063Bd07";
+
 async function main() {
   const SendToken = await hre.ethers.getContractFactory("SendToken");
-  const sendToken = await SendToken.deploy(); 
+  const sendToken = await SendToken.deploy(IAxelarGateway, tokenAddress); 
   await sendToken.deployed();
   console.log("sendToken deployed to:", sendToken.address);
 
@@ -14,7 +17,7 @@ async function main() {
   // Verify the sendToken after deploying
   await hre.run("verify:verify", {
     address: sendToken.address,
-    constructorArguments: [],
+    constructorArguments: [IAxelarGateway, tokenAddress],
     contract: "contracts/SendToken.sol:SendToken",
   });
 }
