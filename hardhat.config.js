@@ -2,7 +2,7 @@ require("@nomicfoundation/hardhat-toolbox");
 require("@nomiclabs/hardhat-etherscan");
 require("dotenv").config();
 
-const MUMBAI_RPC_URL = process.env.MUMBAI_RPC_URL;
+const QUICKNODE_MUMBAI_HTTP_URL = process.env.QUICKNODE_MUMBAI_HTTP_URL;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const POLYGONSCAN_API_KEY = process.env.POLYGONSCAN_API_KEY;
 
@@ -15,7 +15,7 @@ module.exports = {
       blockConfirmation: 1,
     },
     mumbai: {
-      url: MUMBAI_RPC_URL,
+      url: QUICKNODE_MUMBAI_HTTP_URL,
       accounts: [PRIVATE_KEY],
     },
   },
