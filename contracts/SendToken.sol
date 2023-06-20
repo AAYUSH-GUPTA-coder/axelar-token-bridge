@@ -58,6 +58,14 @@ contract SendToken {
         token.transfer(_receiver, _amount);
     }
 
+    /**
+     * @notice function to change the owner of this smart contract
+     * @param _newOwner address of the new owner
+     */
+    function changeOwner(address _newOwner) public onlyOwner {
+        owner = _newOwner;
+    }
+
     //////////////// Getter Funtions /////////////////
     /**
      * @notice function to get the Token balance of the smart contract
