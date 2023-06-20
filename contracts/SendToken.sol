@@ -80,4 +80,11 @@ contract SendToken {
     function getUserBalance(address _user) external view returns (uint) {
         return token.balanceOf(_user);
     }
+
+    /**
+     * @notice function to get the address of the owner
+     */
+    function getOwner() external view returns (address) {
+        return owner;
+    }
 }
