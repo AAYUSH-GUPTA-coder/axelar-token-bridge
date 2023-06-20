@@ -26,8 +26,8 @@ contract SendToken {
 
     /**
      * @notice constructor to set gateway and token address
-     * @param _gateway address of the gateway
-     * @param _token address of the erc20 token
+     * @param _gateway address of the gateway of the Blockchain you are sending token from
+     * @param _token address of the erc20 token of the Blockchain you are sending token from
      */
     constructor(address _gateway, address _token, address _owner) {
         gateway = IAxelarGateway(_gateway);
@@ -39,7 +39,7 @@ contract SendToken {
      * @notice function to send token from Polygon chain to Avalance chain
      * @param _amount amount of token
      */
-    function send(uint _amount, string calldata _receiver) public {
+    function send(uint _amount, string calldata _receiver) external {
         token.approve(address(gateway), _amount);
         gateway.sendToken(
             "Avalanche", // network to send
@@ -54,7 +54,7 @@ contract SendToken {
      * @param _receiver address of the receiver
      * @param _amount amount of tokens
      */
-    function withdraw(address _receiver, uint _amount) public onlyOwner {
+    function withdraw(address _receiver, uint _amount) external onlyOwner {
         token.transfer(_receiver, _amount);
     }
 
@@ -62,7 +62,7 @@ contract SendToken {
      * @notice function to change the owner of this smart contract
      * @param _newOwner address of the new owner
      */
-    function changeOwner(address _newOwner) public onlyOwner {
+    function changeOwner(address _newOwner) external onlyOwner {
         owner = _newOwner;
     }
 
