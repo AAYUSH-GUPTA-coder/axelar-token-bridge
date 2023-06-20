@@ -5,6 +5,8 @@ pragma solidity 0.8.17;
 import {IAxelarGateway} from "@axelar-network/axelar-gmp-sdk-solidity/contracts/interfaces/IAxelarGateway.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
+error ONLY_OWNER_CAN_CALL();
+
 contract SendToken {
     /// @notice variable to store the IAxelarGateway
     IAxelarGateway public immutable gateway;
@@ -12,14 +14,25 @@ contract SendToken {
     /// @notice variable to store the ERC20 Token
     IERC20 public immutable token;
 
+    /// @notice address of the owner
+    address private owner;
+
+    modifier onlyOwner() {
+        if (msg.sender != owner) {
+            revert ONLY_OWNER_CAN_CALL();
+        }
+        _;
+    }
+
     /**
      * @notice constructor to set gateway and token address
-     * @param gateway_ address of the gateway
-     * @param token_ address of the erc20 token
+     * @param _gateway address of the gateway
+     * @param _token address of the erc20 token
      */
-    constructor(address gateway_, address token_) {
-        gateway = IAxelarGateway(gateway_);
-        token = IERC20(token_);
+    constructor(address _gateway, address _token, address _owner) {
+        gateway = IAxelarGateway(_gateway);
+        token = IERC20(_token);
+        owner = _owner;
     }
 
     /**
@@ -41,7 +54,7 @@ contract SendToken {
      * @param _receiver address of the receiver
      * @param _amount amount of tokens
      */
-    function withdraw(address _receiver, uint _amount) public {
+    function withdraw(address _receiver, uint _amount) public onlyOwner {
         token.transfer(_receiver, _amount);
     }
 
