@@ -17,6 +17,7 @@ contract SendToken {
     /// @notice address of the owner
     address private owner;
 
+    /// @notice modifier to check that only the owner address can call the function
     modifier onlyOwner() {
         if (msg.sender != owner) {
             revert ONLY_OWNER_CAN_CALL();
