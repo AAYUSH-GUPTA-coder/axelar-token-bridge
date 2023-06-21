@@ -1,6 +1,7 @@
 const hre = require("hardhat");
 require("@nomiclabs/hardhat-etherscan");
 
+// variables value for Mumbai testnetwork
 const IAxelarGateway = "0xBF62ef1486468a6bd26Dd669C06db43dEd5B849B";
 const tokenAddress = "0x2c852e740B62308c46DD29B982FBb650D063Bd07";
 
