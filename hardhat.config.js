@@ -10,7 +10,7 @@ const QUICKNODE_FUJI_RPC_URL = process.env.QUICKNODE_FUJI_RPC_URL;
 
 module.exports = {
   solidity: "0.8.17",
-  defaultNetwork: "mumbai",
+  defaultNetwork: "fuji",
   networks: {
     hardhat: {
       chainId: 31337,
