@@ -40,12 +40,17 @@ contract SendToken {
      * @notice function to send token from Polygon chain to Avalance chain
      * @param _amount amount of token
      */
-    function send(uint _amount, string calldata _receiver) external {
+    function send(
+        uint _amount,
+        string calldata _receiver,
+        string calldata _blockchain,
+        string calldata _tokenName
+    ) external {
         token.approve(address(gateway), _amount);
         gateway.sendToken(
-            "Avalanche", // network to send
+            _blockchain, // network to send
             _receiver, // address to send
-            "aUSDC", // token name
+            _tokenName, // token name
             _amount // amount of token
         );
     }
