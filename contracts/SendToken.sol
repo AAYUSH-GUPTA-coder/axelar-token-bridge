@@ -43,14 +43,13 @@ contract SendToken {
     function send(
         uint _amount,
         string calldata _receiver,
-        string calldata _blockchain,
-        string calldata _tokenName
+        string calldata _blockchain
     ) external {
         token.approve(address(gateway), _amount);
         gateway.sendToken(
             _blockchain, // network to send
             _receiver, // address to send
-            _tokenName, // token name
+            "aUSDC", // token name
             _amount // amount of token
         );
     }
