@@ -2,8 +2,13 @@ const hre = require("hardhat");
 require("@nomiclabs/hardhat-etherscan");
 
 // variables value for Mumbai testnetwork
-const IAxelarGateway = "0xBF62ef1486468a6bd26Dd669C06db43dEd5B849B";
-const tokenAddress = "0x2c852e740B62308c46DD29B982FBb650D063Bd07";
+// const IAxelarGateway = "0xBF62ef1486468a6bd26Dd669C06db43dEd5B849B";
+// const tokenAddress = "0x2c852e740B62308c46DD29B982FBb650D063Bd07";
+
+// variables value for Fuji (Avalanche) testnetwork
+const IAxelarGateway = "0xC249632c2D40b9001FE907806902f63038B737Ab";
+const tokenAddress = "0x57F1c63497AEe0bE305B8852b354CEc793da43bB";
+
 const owner = "0x4E476F7FB84c785557cDECdbf8CADEbE8EA57C37"
 
 async function main() {
