@@ -1,6 +1,6 @@
 # Axelar Token Bridge
 
-This dApp allows users to transfer tokens from one chain to another. For instance, if you want to transfer USDC from the Polygon chain to Avalanche, you can easily do so using this dApp. I am using Axelar Network for bridging.
+This dApp allows users to transfer tokens from the Avalanche chain to any blockchain. For instance, you can transfer aUSDC from Avalanche to Polygon, Filecoin, or Arbitrum chains. I am using Axelar Network for bridging.
 
 # Getting Started
 
@@ -28,19 +28,20 @@ yarn
 
 1. Setup environment variabltes
 
-You'll want to set your `QUICKNODE_MUMBAI_RPC_URL`, `POLYGONSCAN_KEY` and `PRIVATE_KEY` as environment variables. You can add them to a `.env` file, similar to what you see in `.env.example`.
+You'll want to set your `QUICKNODE_MUMBAI_RPC_URL`, `QUICKNODE_FUJI_RPC_URL`, `AVALANCHE_API_KEY`, `POLYGONSCAN_KEY` and `PRIVATE_KEY` as environment variables. You can add them to a `.env` file, similar to what you see in `.env.example`.
 
 - `PRIVATE_KEY`: The private key of your account (like from [metamask](https://metamask.io/)). **NOTE:** FOR DEVELOPMENT, PLEASE USE A KEY THAT DOESN'T HAVE ANY REAL FUNDS ASSOCIATED WITH IT.
   - You can [learn how to export it here](https://metamask.zendesk.com/hc/en-us/articles/360015289632-How-to-Export-an-Account-Private-Key).
-- `QUICKNODE_MUMBAI_RPC_URL`: This is url of the goerli testnet node you're working with. You can get setup with one for free from [Quicknode](https://www.quicknode.com/)
+- `QUICKNODE_MUMBAI_RPC_URL`, `QUICKNODE_FUJI_RPC_URL`: This is url of the goerli testnet node you're working with. You can get setup with one for free from [Quicknode](https://www.quicknode.com/)
 - `POLYGONSCAN_KEY`: Head over to [Polygonscan API](https://polygonscan.com/myapikey)
+- `AVALANCHE_API_KEY`: Head over to [Snowtrace API](https://snowtrace.io/myapikey)
 
 2. Get testnet ETH
 
-Head over to [QuickNode Mumbai Faucet](https://faucet.quicknode.com/polygon/mumbai) and get some tesnet Matic.
+Head over to [QuickNode Fuji Faucet](https://faucet.quicknode.com/avalanche/fuji) and get some tesnet Matic.
 
 # Deploy your Smart Contract
-Run this command to deploy your smart contract to mumbai test network.
+Run this command to deploy your smart contract to Fuji test network.
 ```
-yarn hardhat run scripts/deploy.js --network mumbai
+yarn hardhat run scripts/deploy.js --network fuji
 ```
