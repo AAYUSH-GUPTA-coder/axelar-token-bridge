@@ -24,6 +24,7 @@ cd axelar-token-bridge
 yarn
 ```
 
+
 # Deployment to a testnet or mainnet
 
 1. Setup environment variabltes
@@ -45,3 +46,7 @@ Run this command to deploy your smart contract to Fuji test network.
 ```
 yarn hardhat run scripts/deploy.js --network fuji
 ```
+
+# Read Axelar Docs
+If you want to understand how Axelar works, you can check their official [docs](https://docs.axelar.dev/).
+To get the Gateway Contract and token address, you can visit this [link](https://docs.axelar.dev/resources/testnet) if you want to use different tokens or deploy to a different blockchain.
